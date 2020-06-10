@@ -9,7 +9,7 @@ const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 const App = (props) => {
 	return (
 		<Admin
-			title="Authentication Admin"
+			title="Todo Aqui Admin"
 			dataProvider={dataProvider}
 			authProvider={authProvider}
 			loginPage={CustomLoginPage}
