@@ -12,6 +12,7 @@ const UsersList = (props) => {
 			exporter={false}
 		>
 			<Datagrid rowClick="show">
+				<TextField label="Nombre" source="name" />
 				<EmailField label="Correo" source="email" />
 				<TextField label="Rol" source="role" />
 				<BooleanField label="Estado" source="status" />

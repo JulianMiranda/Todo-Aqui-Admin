@@ -5,6 +5,8 @@ import authProvider from './auth/Provider';
 import {CustomLoginPage} from './auth/Login';
 
 import Users from './components/users';
+import Categories from './components/categories';
+import SubCategories from './components/subcategories';
 
 /* import RolesReducer from './store/reducers/roles.reducer'; */
 /* import RolesSaga from './store/sagas/roles.saga'; */
@@ -21,6 +23,8 @@ const App = (props) => {
 		>
 			{(permissions) =>
 				permissions === 'CUN' && [
+					<Resource name="categories" {...Categories} />,
+					<Resource name="subcategories" {...SubCategories} />,
 					<Resource options={{label: 'Usuarios'}} name="users" {...Users} />,
 				]
 			}
