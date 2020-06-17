@@ -1,10 +1,11 @@
 import React from 'react';
 import {Edit, TextInput, SimpleForm, BooleanInput} from 'react-admin';
 import {Grid, CardContent, Card} from '@material-ui/core';
+import {CategoriesTitle} from './CategoriesTitle';
 
 const CategoriesEdit = (props) => {
 	return (
-		<Edit {...props}>
+		<Edit {...props} title={<CategoriesTitle />}>
 			<SimpleForm redirect="list">
 				<Card>
 					<CardContent>
