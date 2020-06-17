@@ -40,10 +40,12 @@ const category = async (resource, data, previousData) => {
 	if (data.name !== previousData.name) {
 		object.name = data.name;
 	}
-	if (!data.image.id) {
+	/* if (!data.image.id) {
 		const url = await UploadImage(resource, [data.image]);
+		console.log(url, 'URL');
+
 		object.image = {url: url[0]};
-	}
+	} */
 	if (data.status !== previousData.status) {
 		object.status = data.status;
 	}

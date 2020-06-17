@@ -27,7 +27,6 @@ const SubCategoriesList = (props) => {
 					<ReferenceField label="Categoría" source="category" reference="categories">
 						<TextField source="name" />
 					</ReferenceField>
-
 					<CustomDate label="Editado" source="updatedAt" />
 					<EditButton label="Editar" />
 				</Datagrid>

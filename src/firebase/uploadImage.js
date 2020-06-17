@@ -27,7 +27,7 @@ const resize = async (path, image) => {
 	const {url, rawFile} = image;
 	const extension = rawFile.type.split('/')[1];
 	const name = `${uniqid()}.${extension}`;
-	const options = {maxWidthOrHeight: path === 'users' ? 100 : 1000, useWebWorker: true};
+	const options = {maxWidthOrHeight: path === 'users' ? 80 : 300, useWebWorker: true};
 	try {
 		debugger;
 		const blobCreated = await fetch(url).then((r) => r.blob());

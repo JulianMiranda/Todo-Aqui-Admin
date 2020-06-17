@@ -7,6 +7,7 @@ import {CustomLoginPage} from './auth/Login';
 import Users from './components/users';
 import Categories from './components/categories';
 import SubCategories from './components/subcategories';
+import Anounces from './components/anounces';
 
 /* import RolesReducer from './store/reducers/roles.reducer'; */
 /* import RolesSaga from './store/sagas/roles.saga'; */
@@ -22,9 +23,10 @@ const App = (props) => {
 			loginPage={CustomLoginPage}
 		>
 			{(permissions) =>
-				permissions === 'CUN' && [
+				permissions === 'ADMIN' && [
 					<Resource name="categories" {...Categories} />,
 					<Resource name="subcategories" {...SubCategories} />,
+					<Resource name="anounces" {...Anounces} />,
 					<Resource options={{label: 'Usuarios'}} name="users" {...Users} />,
 				]
 			}

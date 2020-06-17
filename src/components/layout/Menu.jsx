@@ -4,6 +4,7 @@ import {useMediaQuery} from '@material-ui/core';
 import {MenuItemLink} from 'react-admin';
 
 import categories from '../categories';
+import anounces from '../anounces';
 import subcategories from '../subcategories';
 import users from '../users';
 import SubMenu from './SubMenu';
@@ -52,6 +53,14 @@ const Menu = ({onMenuClick, dense, logout}) => {
 				to={`/users`}
 				primaryText="Usuarios"
 				leftIcon={<users.icon />}
+				onClick={onMenuClick}
+				sidebarIsOpen={open}
+				dense={dense}
+			/>
+			<MenuItemLink
+				to={`/anounces`}
+				primaryText="Anuncios"
+				leftIcon={<anounces.icon />}
 				onClick={onMenuClick}
 				sidebarIsOpen={open}
 				dense={dense}

@@ -74,6 +74,8 @@ export default {
 
 		debugger;
 		const data = await PrepareEditObject(resource, params);
+		console.log(data, 'Data en el dataProvider');
+
 		if (!data) return {data: {}};
 		console.log(data, 'Dataaaaa');
 

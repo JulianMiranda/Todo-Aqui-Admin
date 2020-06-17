@@ -1,6 +1,7 @@
 import React from 'react';
-import {List, Datagrid, BooleanField, EditButton, EmailField, TextField} from 'react-admin';
+import {List, Datagrid, EditButton, EmailField, TextField} from 'react-admin';
 import {Filters} from './Filters';
+import {CustomBoolean} from '../../common/fields/Boolean';
 
 const UsersList = (props) => {
 	return (
@@ -15,7 +16,7 @@ const UsersList = (props) => {
 				<TextField label="Nombre" source="name" />
 				<EmailField label="Correo" source="email" />
 				<TextField label="Rol" source="role" />
-				<BooleanField label="Estado" source="status" />
+				<CustomBoolean label="Estado" source="status" />
 				<EditButton label="Editar" />
 			</Datagrid>
 		</List>

@@ -35,7 +35,6 @@ export default {
 			auth().onAuthStateChanged(async (user) => {
 				if (user) {
 					const {claims} = await user.getIdTokenResult();
-					console.log(claims, 'Claims');
 					if (claims && claims.role) resolve(claims.role);
 					else reject();
 				} else {
