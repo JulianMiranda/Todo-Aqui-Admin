@@ -9,22 +9,18 @@ import {
 	SimpleForm,
 	BooleanInput,
 } from 'react-admin';
+import {SubCategoriesTitle} from './SubCategoriesTitle';
 import {Grid, CardContent, Card} from '@material-ui/core';
 
-const AnounceTitle = ({record}) => (
-	<span>
-		Oferta: <i>{record.title}</i>
-	</span>
-);
-const ProductEdit = (props) => {
+const SubCategoriesEdit = (props) => {
 	return (
-		<Edit {...props} title={<AnounceTitle />}>
+		<Edit {...props} title={<SubCategoriesTitle />}>
 			<SimpleForm redirect="list">
 				<Card>
 					<CardContent>
 						<Grid container spacing={2}>
 							<Grid item sm={6} xs={12}>
-								<TextInput label="Nombre" fullWidth source="title" />
+								<TextInput label="Nombre" fullWidth source="name" />
 							</Grid>{' '}
 							<Grid item sm={6} xs={12}>
 								<ReferenceInput
@@ -37,17 +33,11 @@ const ProductEdit = (props) => {
 								</ReferenceInput>
 							</Grid>
 							<Grid item sm={12} xs={12}>
-								<ReferenceInput label="Proveedor" fullWidth source="provider.id" reference="users">
-									<SelectInput source="name" />
-								</ReferenceInput>
-							</Grid>
-							<Grid item sm={12} xs={12}>
 								<ImageInput
-									source="images"
-									resource="anounces"
+									source="image"
+									resource="subcategories"
 									accept="image/*"
 									placeholder={<p>Drop your file here</p>}
-									multiple="true"
 									fullWidth
 								>
 									<ImageField source="url" />
@@ -62,5 +52,4 @@ const ProductEdit = (props) => {
 		</Edit>
 	);
 };
-
-export default ProductEdit;
+export default SubCategoriesEdit;

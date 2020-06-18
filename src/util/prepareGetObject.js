@@ -4,6 +4,7 @@ export const PrepareGetObject = async (resource, params) => {
 	if (resource === 'users') return await user(params);
 	else if (resource === 'categories') return common(params);
 	else if (resource === 'subcategories') return subcategories(resource, params);
+	else if (resource === 'anounces') return anounce(params);
 
 	return {};
 };
@@ -69,6 +70,28 @@ const common = async (params) => {
 
 	const query = {
 		filter: queryFilter,
+		search,
+		fields: {},
+		docsPerPage: perPage,
+		page,
+		sort: {[sort.field]: sort.order},
+	};
+
+	if (JSON.stringify(query) === '{}') return null;
+
+	return query;
+};
+
+const anounce = async (params) => {
+	const {pagination, sort, filter} = params;
+	const {page, perPage} = pagination;
+	const {q, ...queryFilter} = filter;
+
+	const search = q ? {text: q, fields: ['title']} : {};
+
+	const filterP = await compareFilterSub(queryFilter);
+	const query = {
+		filter: filterP,
 		search,
 		fields: {},
 		docsPerPage: perPage,

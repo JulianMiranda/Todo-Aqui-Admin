@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {List, Datagrid, TextField, DateField, ReferenceField} from 'react-admin';
+import {List, Datagrid, TextField, EditButton, DateField, ReferenceField} from 'react-admin';
 
 import AnounceFilter from './Filters';
 /* 
@@ -17,6 +17,7 @@ const AnounceList = (props) => (
 			<ReferenceField source="category" reference="categories" link={false} label="Categoría">
 				<TextField source="name" />
 			</ReferenceField>
+			<EditButton label="Editar" />
 		</Datagrid>
 	</List>
 );

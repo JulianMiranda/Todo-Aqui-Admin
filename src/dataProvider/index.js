@@ -70,14 +70,11 @@ export default {
 	},
 
 	update: async (resource, params) => {
-		console.log(params, 'Params');
-
 		debugger;
 		const data = await PrepareEditObject(resource, params);
 		console.log(data, 'Data en el dataProvider');
 
 		if (!data) return {data: {}};
-		console.log(data, 'Dataaaaa');
 
 		const headers = await getHeaders();
 		return httpClient(`${apiUrl}/${resource}/update/${params.id}`, {

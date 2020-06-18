@@ -5,6 +5,7 @@ export const PrepareEditObject = async (resource, params) => {
 	if (resource === 'users') return await user(resource, data, previousData);
 	else if (resource === 'categories') return category(resource, data, previousData);
 	else if (resource === 'subcategories') return subcategory(resource, data, previousData);
+	else if (resource === 'anounces') return anounce(resource, data, previousData);
 
 	return {};
 };
@@ -68,5 +69,52 @@ const subcategory = async (resource, data, previousData) => {
 		const url = await UploadImage(resource, [data.image]);
 		object.image = {url: url[0]};
 	}
+	return object;
+};
+
+const anounce = async (resource, data, previousData) => {
+	const object = {};
+
+	if (data.title !== previousData.title) {
+		object.title = data.title;
+	}
+
+	if (data.category.id !== previousData.category.id) {
+		object.category = data.category.id;
+	}
+	if (data.provider.id !== previousData.provider.id) {
+		object.provider = data.provider.id;
+	}
+
+	if (data.status !== previousData.status) {
+		object.status = data.status;
+	}
+	if (data.images && data.images.length > 0) {
+		let urls = [];
+
+		const addImages = data.images.filter((image) => !image.id);
+		if (addImages.length > 0) {
+			urls = await UploadImage(resource, addImages);
+		}
+
+		if (urls.length > 0) {
+			object.images = urls.map((url) => ({
+				url,
+			}));
+		}
+
+		const deleteImages = previousData.images
+			.filter(
+				(x) =>
+					!data.images
+						.filter((image) => image.id)
+						.map((x) => x.id)
+						.includes(x.id),
+			)
+			.map((image) => image.id);
+
+		if (deleteImages.length > 0) object.deleteImages = deleteImages;
+	}
+
 	return object;
 };
