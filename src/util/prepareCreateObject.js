@@ -7,6 +7,7 @@ export const PrepareCreateObject = async (resource, params) => {
 	if (resource === 'categories') return await categories(resource, params);
 	else if (resource === 'subcategories') return subcategories(resource, params);
 	else if (resource === 'anounces') return anounces(resource, params);
+	else if (resource === 'reviews') return reviews(resource, params);
 
 	return {};
 };
@@ -41,5 +42,17 @@ const anounces = async (resource, params) => {
 	const url = await UploadImage(resource, [params.data.image]);
 	object.images = [{url: url[0]}];
 
+	return object;
+};
+
+const reviews = async (resource, params) => {
+	const object = {};
+
+	object.user = params.data.user;
+	object.provider = params.data.provider;
+	object.anounce = params.data.anounce;
+	object.rating = params.data.rating;
+	object.rating = params.data.rating;
+	object.recomendations = params.data.recomendations;
 	return object;
 };

@@ -8,6 +8,7 @@ import Users from './components/users';
 import Categories from './components/categories';
 import SubCategories from './components/subcategories';
 import Anounces from './components/anounces';
+import Reviews from './components/reviews';
 
 /* import RolesReducer from './store/reducers/roles.reducer'; */
 /* import RolesSaga from './store/sagas/roles.saga'; */
@@ -27,6 +28,7 @@ const App = (props) => {
 					<Resource name="categories" {...Categories} />,
 					<Resource name="subcategories" {...SubCategories} />,
 					<Resource name="anounces" {...Anounces} />,
+					<Resource name="reviews" {...Reviews} />,
 					<Resource options={{label: 'Usuarios'}} name="users" {...Users} />,
 				]
 			}

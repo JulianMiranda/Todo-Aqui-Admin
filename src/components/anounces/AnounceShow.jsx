@@ -8,7 +8,7 @@ import {useShowController, ReferenceField, TextField} from 'react-admin';
 
 /* import Basket from '../orders/Basket'; */
 
-const CustomerField = ({record}) =>
+/* const CustomerField = ({record}) =>
 	record ? (
 		<Typography>
 			{record.first_name} {record.last_name}
@@ -17,7 +17,7 @@ const CustomerField = ({record}) =>
 			<br />
 			{record.city}, {record.zipcode}
 		</Typography>
-	) : null;
+	) : null; */
 
 const AnounceShow = (props) => {
 	const {record} = useShowController(props);

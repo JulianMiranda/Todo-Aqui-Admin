@@ -7,6 +7,7 @@ import categories from '../categories';
 import anounces from '../anounces';
 import subcategories from '../subcategories';
 import users from '../users';
+import reviews from '../reviews';
 import SubMenu from './SubMenu';
 
 const Menu = ({onMenuClick, dense, logout}) => {
@@ -61,6 +62,14 @@ const Menu = ({onMenuClick, dense, logout}) => {
 				to={`/anounces`}
 				primaryText="Anuncios"
 				leftIcon={<anounces.icon />}
+				onClick={onMenuClick}
+				sidebarIsOpen={open}
+				dense={dense}
+			/>
+			<MenuItemLink
+				to={`/reviews`}
+				primaryText="Comentarios"
+				leftIcon={<reviews.icon />}
 				onClick={onMenuClick}
 				sidebarIsOpen={open}
 				dense={dense}
