@@ -1,5 +1,5 @@
 import React from 'react';
-import {Create, SimpleForm, ReferenceInput, SelectInput, NumberInput, TextInput} from 'react-admin';
+import {Create, SimpleForm, ReferenceInput, SelectInput, NumberInput} from 'react-admin';
 
 const CategoriesCreate = (props) => {
 	return (
@@ -15,7 +15,6 @@ const CategoriesCreate = (props) => {
 					<SelectInput source="title" />
 				</ReferenceInput>
 				<NumberInput source="rating" />
-				<TextInput source="recomendations" />
 			</SimpleForm>
 		</Create>
 	);

@@ -29,13 +29,16 @@ const CategoriesList = (props) => {
 				/>
 			) : (
 				<Datagrid /* rowClick="show" */>
+					<ReferenceField source="anounce" reference="anounces" link={false} label="Anuncio">
+						<TextField source="title" />
+					</ReferenceField>
 					<ReferenceField source="user" reference="users" link={false} label="Usuario">
 						<TextField source="name" />
 					</ReferenceField>
 					<ReferenceField source="provider" reference="users" link={false} label="Proveedor">
 						<TextField source="name" />
 					</ReferenceField>
-					<NumberField label="Rating" source="ratingAvg" />
+					<NumberField label="Rating" source="rating" />
 					<EditButton label="Editar" />
 				</Datagrid>
 			)}

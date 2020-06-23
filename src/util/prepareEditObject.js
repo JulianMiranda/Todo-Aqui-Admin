@@ -6,6 +6,7 @@ export const PrepareEditObject = async (resource, params) => {
 	else if (resource === 'categories') return category(resource, data, previousData);
 	else if (resource === 'subcategories') return subcategory(resource, data, previousData);
 	else if (resource === 'anounces') return anounce(resource, data, previousData);
+	else if (resource === 'reviews') return reviews(resource, data, previousData);
 
 	return {};
 };
@@ -116,5 +117,26 @@ const anounce = async (resource, data, previousData) => {
 		if (deleteImages.length > 0) object.deleteImages = deleteImages;
 	}
 
+	return object;
+};
+
+const reviews = async (resource, data, previousData) => {
+	const object = {};
+
+	if (data.status !== previousData.status) {
+		object.status = data.status;
+	}
+	if (data.user.id !== previousData.user.id) {
+		object.user = data.user.id;
+	}
+	if (data.provider.id !== previousData.provider.id) {
+		object.provider = data.provider.id;
+	}
+	if (data.anounce.id !== previousData.anounce.id) {
+		object.anounce = data.anounce.id;
+	}
+	if (data.recomendations !== previousData.recomendations) {
+		object.recomendations = data.recomendations;
+	}
 	return object;
 };

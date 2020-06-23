@@ -3,12 +3,14 @@ import {Admin, Resource} from 'react-admin';
 import dataProvider from './dataProvider';
 import authProvider from './auth/Provider';
 import {CustomLoginPage} from './auth/Login';
+import {Layout} from './components/layout';
 
 import Users from './components/users';
 import Categories from './components/categories';
 import SubCategories from './components/subcategories';
 import Anounces from './components/anounces';
 import Reviews from './components/reviews';
+import Opportunities from './components/opportunities';
 
 /* import RolesReducer from './store/reducers/roles.reducer'; */
 /* import RolesSaga from './store/sagas/roles.saga'; */
@@ -22,6 +24,7 @@ const App = (props) => {
 			dataProvider={dataProvider}
 			authProvider={authProvider}
 			loginPage={CustomLoginPage}
+			layout={Layout}
 		>
 			{(permissions) =>
 				permissions === 'ADMIN' && [
@@ -29,6 +32,7 @@ const App = (props) => {
 					<Resource name="subcategories" {...SubCategories} />,
 					<Resource name="anounces" {...Anounces} />,
 					<Resource name="reviews" {...Reviews} />,
+					<Resource name="opportunities" {...Opportunities} />,
 					<Resource options={{label: 'Usuarios'}} name="users" {...Users} />,
 				]
 			}

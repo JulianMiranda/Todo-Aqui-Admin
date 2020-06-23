@@ -70,10 +70,9 @@ export default {
 	},
 
 	update: async (resource, params) => {
-		debugger;
 		const data = await PrepareEditObject(resource, params);
 		console.log(data, 'Data en el dataProvider');
-
+		debugger;
 		if (!data) return {data: {}};
 
 		const headers = await getHeaders();

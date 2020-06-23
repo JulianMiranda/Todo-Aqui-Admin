@@ -1,5 +1,5 @@
 import React from 'react';
-import {Edit, TextInput, ImageInput, ImageField, SimpleForm, BooleanInput} from 'react-admin';
+import {Edit, ReferenceInput, SelectInput, SimpleForm, BooleanInput, TextInput} from 'react-admin';
 import {ReviewsTitle} from './ReviewsTitle';
 import {Grid, CardContent, Card} from '@material-ui/core';
 
@@ -11,19 +11,19 @@ const CategoriesEdit = (props) => {
 					<CardContent>
 						<Grid container spacing={2}>
 							<Grid item sm={6} xs={12}>
-								<TextInput label="Nombre" fullWidth source="name" />
+								<ReferenceInput label="Usuario" source="user.id" reference="users">
+									<SelectInput source="name" />
+								</ReferenceInput>
 							</Grid>{' '}
 							<Grid item sm={12} xs={12}>
-								<ImageInput
-									source="image"
-									resource="categories"
-									accept="image/*"
-									placeholder={<p>Drop your file here</p>}
-									fullWidth
-								>
-									<ImageField source="url" />
-								</ImageInput>
+								<ReferenceInput label="Proveedor" source="provider.id" reference="users">
+									<SelectInput source="name" />
+								</ReferenceInput>
+								<ReferenceInput label="Anuncio" source="anounce.id" reference="anounces">
+									<SelectInput source="title" />
+								</ReferenceInput>
 
+								<TextInput source="recomendations" />
 								<BooleanInput label="Estado" source="status" />
 							</Grid>
 						</Grid>

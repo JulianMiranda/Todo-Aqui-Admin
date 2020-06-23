@@ -52,7 +52,5 @@ const reviews = async (resource, params) => {
 	object.provider = params.data.provider;
 	object.anounce = params.data.anounce;
 	object.rating = params.data.rating;
-	object.rating = params.data.rating;
-	object.recomendations = params.data.recomendations;
 	return object;
 };

@@ -5,6 +5,7 @@ import {MenuItemLink} from 'react-admin';
 
 import categories from '../categories';
 import anounces from '../anounces';
+import opportunities from '../opportunities';
 import subcategories from '../subcategories';
 import users from '../users';
 import reviews from '../reviews';
@@ -13,6 +14,7 @@ import SubMenu from './SubMenu';
 const Menu = ({onMenuClick, dense, logout}) => {
 	const [state, setState] = useState({
 		menuCategories: false,
+		menuAnounces: false,
 	});
 
 	const isSmall = useMediaQuery((theme) => theme.breakpoints.down('xs'));
@@ -50,18 +52,35 @@ const Menu = ({onMenuClick, dense, logout}) => {
 					dense={dense}
 				/>
 			</SubMenu>
+			<SubMenu
+				handleToggle={() => handleToggle('menuAnounces')}
+				isOpen={state.menuAnounces}
+				sidebarIsOpen={open}
+				name="Anuncios"
+				icon={<anounces.icon />}
+				dense={dense}
+			>
+				<MenuItemLink
+					to={`/anounces`}
+					primaryText="Anuncios"
+					leftIcon={<anounces.icon />}
+					onClick={onMenuClick}
+					sidebarIsOpen={open}
+					dense={dense}
+				/>
+				<MenuItemLink
+					to={`/opportunities`}
+					primaryText="Oportunidades"
+					leftIcon={<opportunities.icon />}
+					onClick={onMenuClick}
+					sidebarIsOpen={open}
+					dense={dense}
+				/>
+			</SubMenu>
 			<MenuItemLink
 				to={`/users`}
 				primaryText="Usuarios"
 				leftIcon={<users.icon />}
-				onClick={onMenuClick}
-				sidebarIsOpen={open}
-				dense={dense}
-			/>
-			<MenuItemLink
-				to={`/anounces`}
-				primaryText="Anuncios"
-				leftIcon={<anounces.icon />}
 				onClick={onMenuClick}
 				sidebarIsOpen={open}
 				dense={dense}
