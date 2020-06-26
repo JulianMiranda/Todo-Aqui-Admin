@@ -1,5 +1,7 @@
 import React from 'react';
 
 export const OpportunitiesTitle = ({record}) => {
-	return <span>Oportunidad {record ? `"${record.name}"` : ''}</span>;
+	console.log(record, 'Record');
+
+	return <span>Oportunidad {record ? `"${record.anounce.title}"` : ''}</span>;
 };

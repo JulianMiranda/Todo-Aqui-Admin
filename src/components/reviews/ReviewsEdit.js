@@ -1,5 +1,13 @@
 import React from 'react';
-import {Edit, ReferenceInput, SelectInput, SimpleForm, BooleanInput, TextInput} from 'react-admin';
+import {
+	Edit,
+	ReferenceInput,
+	SelectInput,
+	SimpleForm,
+	AutocompleteInput,
+	BooleanInput,
+	TextInput,
+} from 'react-admin';
 import {ReviewsTitle} from './ReviewsTitle';
 import {Grid, CardContent, Card} from '@material-ui/core';
 
@@ -20,9 +28,10 @@ const CategoriesEdit = (props) => {
 									<SelectInput source="name" />
 								</ReferenceInput>
 								<ReferenceInput label="Anuncio" source="anounce.id" reference="anounces">
-									<SelectInput source="title" />
+									<AutocompleteInput
+										optionText={(choice) => (choice.title ? `${choice.title}` : '')}
+									/>
 								</ReferenceInput>
-
 								<TextInput source="recomendations" />
 								<BooleanInput label="Estado" source="status" />
 							</Grid>

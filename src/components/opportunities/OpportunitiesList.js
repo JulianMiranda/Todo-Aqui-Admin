@@ -83,8 +83,11 @@ const TabbedDatagrid = ({ids, filterValues, setFilters, displayedFilters, ...res
 			<div>
 				{filterValues.state === 'OPP' && (
 					<Datagrid {...rest} ids={opp} optimized rowClick="edit">
-						<DateField source="updatedAt" showTime />
-						<ReferenceField source="anounce" reference="anounces" link={false} label="Anuncio">
+						<ReferenceField
+							source="anounce"
+							reference="anounces"
+							/* link={false} */ label="Anuncio"
+						>
 							<TextField source="title" />
 						</ReferenceField>
 
@@ -94,11 +97,16 @@ const TabbedDatagrid = ({ids, filterValues, setFilters, displayedFilters, ...res
 						<ReferenceField source="user" reference="users" link={false} label="Usuario">
 							<TextField source="name" />
 						</ReferenceField>
+						<DateField label="Fecha" source="updatedAt" showTime />
 					</Datagrid>
 				)}
 				{filterValues.state === 'QUOT' && (
 					<Datagrid {...rest} ids={quot} rowClick="edit">
-						<ReferenceField source="anounce" reference="anounces" link={false} label="Anuncio">
+						<ReferenceField
+							source="anounce"
+							reference="anounces"
+							/* link={false} */ label="Anuncio"
+						>
 							<TextField source="title" />
 						</ReferenceField>
 
@@ -123,7 +131,11 @@ const TabbedDatagrid = ({ids, filterValues, setFilters, displayedFilters, ...res
 				)}
 				{filterValues.state === 'ORDER' && (
 					<Datagrid {...rest} ids={order} rowClick="edit">
-						<ReferenceField source="anounce" reference="anounces" link={false} label="Anuncio">
+						<ReferenceField
+							source="anounce"
+							reference="anounces"
+							/* link={false} */ label="Anuncio"
+						>
 							<TextField source="title" />
 						</ReferenceField>
 

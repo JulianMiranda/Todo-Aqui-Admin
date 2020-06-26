@@ -75,6 +75,7 @@ const subcategory = async (resource, data, previousData) => {
 
 const anounce = async (resource, data, previousData) => {
 	const object = {};
+	console.log(data, 'Data Edit');
 
 	if (data.title !== previousData.title) {
 		object.title = data.title;

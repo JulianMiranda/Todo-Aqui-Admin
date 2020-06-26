@@ -113,7 +113,6 @@ const opportunities = async (params) => {
 	const search = q ? {text: q, fields: ['name']} : {};
 
 	const filterP = await FilterOpp(queryFilter);
-	console.log(filterP, 'FiltroP');
 
 	const query = {
 		filter: filterP,

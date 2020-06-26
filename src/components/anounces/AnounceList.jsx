@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {List, Datagrid, TextField, EditButton, DateField, ReferenceField} from 'react-admin';
+import {List, Datagrid, NumberField, TextField, EditButton, ReferenceField} from 'react-admin';
 
 import AnounceFilter from './Filters';
 /* 
 import FullNameField from '../visitors/FullNameField'; */
 
 const AnounceList = (props) => (
-	<List {...props} filters={<AnounceFilter />} perPage={10} exporter={false}>
+	<List {...props} filters={<AnounceFilter />} title="Anuncios" perPage={10} exporter={false}>
 		<Datagrid>
-			<DateField source="updatedAt" />
-			<TextField source="title" />
+			<TextField label="Título" source="title" />
+			<NumberField label="Rating" source="ratingAvg" />
 			<ReferenceField source="provider" reference="users">
 				{/* <FullNameField /> */}
 				<TextField source="name" />

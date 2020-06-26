@@ -1,15 +1,10 @@
 import React from 'react';
-import {Filter, ReferenceInput, SelectInput} from 'react-admin';
+import {Filter, ReferenceInput, AutocompleteInput, SelectInput} from 'react-admin';
 
 export const Filters = (props) => (
 	<Filter {...props}>
-		<ReferenceInput
-			label="Anuncio"
-			source="anounce"
-			reference="anounces"
-			sort={{field: 'id', order: 'ASC'}}
-		>
-			<SelectInput source="title" />
+		<ReferenceInput label="Anuncio" source="anounce" reference="anounces">
+			<AutocompleteInput optionText={(choice) => (choice.title ? `${choice.title}` : '')} />
 		</ReferenceInput>
 		<ReferenceInput
 			label="Proveedor"
