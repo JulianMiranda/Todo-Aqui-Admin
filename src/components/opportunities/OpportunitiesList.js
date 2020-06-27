@@ -17,6 +17,7 @@ import {
 } from '@material-ui/core';
 import {Filters} from './Filters';
 import {CustomBoolean} from '../../common/fields/Boolean';
+import FullNameField from '../users/FullNameField';
 
 /* import {Identifier} from 'ra-core'; */
 const useDatagridStyles = makeStyles({
@@ -92,10 +93,10 @@ const TabbedDatagrid = ({ids, filterValues, setFilters, displayedFilters, ...res
 						</ReferenceField>
 
 						<ReferenceField source="provider" reference="users" link={false} label="Proveedor">
-							<TextField source="name" />
+							<FullNameField />
 						</ReferenceField>
 						<ReferenceField source="user" reference="users" link={false} label="Usuario">
-							<TextField source="name" />
+							<FullNameField />
 						</ReferenceField>
 						<DateField label="Fecha" source="updatedAt" showTime />
 					</Datagrid>
@@ -111,10 +112,10 @@ const TabbedDatagrid = ({ids, filterValues, setFilters, displayedFilters, ...res
 						</ReferenceField>
 
 						<ReferenceField source="provider" reference="users" link={false} label="Proveedor">
-							<TextField source="name" />
+							<FullNameField />
 						</ReferenceField>
 						<ReferenceField source="user" reference="users" link={false} label="Usuario">
-							<TextField source="name" />
+							<FullNameField />
 						</ReferenceField>
 						<NumberField
 							source="cost"
@@ -140,10 +141,10 @@ const TabbedDatagrid = ({ids, filterValues, setFilters, displayedFilters, ...res
 						</ReferenceField>
 
 						<ReferenceField source="provider" reference="users" link={false} label="Proveedor">
-							<TextField source="name" />
+							<FullNameField />
 						</ReferenceField>
 						<ReferenceField source="user" reference="users" link={false} label="Usuario">
-							<TextField source="name" />
+							<FullNameField />
 						</ReferenceField>
 						<NumberField
 							source="cost"

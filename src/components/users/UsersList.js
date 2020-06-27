@@ -2,6 +2,7 @@ import React from 'react';
 import {List, Datagrid, EditButton, EmailField, TextField} from 'react-admin';
 import {Filters} from './Filters';
 import {CustomBoolean} from '../../common/fields/Boolean';
+import FullNameField from './FullNameField';
 
 const UsersList = (props) => {
 	return (
@@ -13,7 +14,8 @@ const UsersList = (props) => {
 			exporter={false}
 		>
 			<Datagrid rowClick="show">
-				<TextField label="Nombre" source="name" />
+				<FullNameField />
+				{/* <TextField label="Nombre" source="name" /> */}
 				<EmailField label="Correo" source="email" />
 				<TextField label="Rol" source="role" />
 				<CustomBoolean label="Estado" source="status" />

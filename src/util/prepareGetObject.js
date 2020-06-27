@@ -84,6 +84,7 @@ const common = async (params) => {
 };
 
 const anounce = async (params) => {
+	const population = [{path: 'image', fields: {url: true, status: true}}];
 	const {pagination, sort, filter} = params;
 	const {page, perPage} = pagination;
 	const {q, ...queryFilter} = filter;
@@ -98,6 +99,7 @@ const anounce = async (params) => {
 		docsPerPage: perPage,
 		page,
 		sort: {[sort.field]: sort.order},
+		population: population,
 	};
 
 	if (JSON.stringify(query) === '{}') return null;

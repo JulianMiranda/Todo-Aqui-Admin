@@ -3,6 +3,7 @@ import {getHeaders} from '../util/api';
 import {PrepareEditObject} from '../util/prepareEditObject';
 import {PrepareGetObject} from '../util/prepareGetObject';
 import {PrepareCreateObject} from '../util/prepareCreateObject';
+import {PrepareGetManyObject} from '../util/prepareGetManyObject';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 const httpClient = fetchUtils.fetchJson;
@@ -33,9 +34,7 @@ export default {
 	},
 
 	getMany: async (resource, params) => {
-		const query = {
-			getAll: 'true',
-		};
+		const query = await PrepareGetManyObject(resource, params);
 
 		const headers = await getHeaders();
 
