@@ -1,16 +1,36 @@
 import * as React from 'react';
-import {List, Datagrid, NumberField, TextField, EditButton, ReferenceField} from 'react-admin';
+import {
+	List,
+	Pagination,
+	Datagrid,
+	NumberField,
+	TextField,
+	EditButton,
+	ReferenceField,
+} from 'react-admin';
+
+import GridList from './GridList';
 
 import AnounceFilter from './Filters';
 
 import FullNameField from '../users/FullNameField';
 
 const AnounceList = (props) => (
-	<List {...props} filters={<AnounceFilter />} title="Anuncios" perPage={10} exporter={false}>
-		<Datagrid>
+	<List
+		{...props}
+		filters={<AnounceFilter />}
+		sort={{field: 'id', order: 'ASC'}}
+		pagination={<Pagination rowsPerPageOptions={[10, 20, 40]} />}
+		title="Anuncios"
+		perPage={10}
+		exporter={false}
+	>
+		<GridList />
+
+		{/* <Datagrid>
 			<TextField label="Título" source="title" />
 			<NumberField label="Rating" source="ratingAvg" />
-			{/* <FullNameField /> */}
+
 			<ReferenceField source="provider" reference="users">
 				<FullNameField />
 			</ReferenceField>
@@ -18,7 +38,7 @@ const AnounceList = (props) => (
 				<TextField source="name" />
 			</ReferenceField>
 			<EditButton label="Editar" />
-		</Datagrid>
+		</Datagrid> */}
 	</List>
 );
 

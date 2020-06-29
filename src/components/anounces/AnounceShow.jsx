@@ -11,8 +11,6 @@ import {CustomBoolean} from '../../common/fields/Boolean';
 const AnounceShow = (props) => {
 	const {record} = useShowController(props);
 	const classes = useStyles();
-	console.log(record, 'record');
-
 	if (!record) return null;
 	return (
 		<Show title={<AnounceTitle />} {...props}>

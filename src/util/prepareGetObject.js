@@ -84,7 +84,17 @@ const common = async (params) => {
 };
 
 const anounce = async (params) => {
-	const population = [{path: 'image', fields: {url: true, status: true}}];
+	const population = [
+		{
+			path: 'images',
+			filter: {status: true},
+			fields: {
+				url: true,
+				width: true,
+				height: true,
+			},
+		},
+	];
 	const {pagination, sort, filter} = params;
 	const {page, perPage} = pagination;
 	const {q, ...queryFilter} = filter;
@@ -107,7 +117,17 @@ const anounce = async (params) => {
 	return query;
 };
 const opportunities = async (params) => {
-	const population = [{path: 'image', fields: {url: true, status: true}}];
+	const population = [
+		{
+			path: 'images',
+			filter: {status: true},
+			fields: {
+				url: true,
+				width: true,
+				height: true,
+			},
+		},
+	];
 	const {pagination, sort, filter} = params;
 	const {page, perPage} = pagination;
 	const {q, ...queryFilter} = filter;

@@ -48,18 +48,19 @@ const LoadedGridList = ({ids, data, basePath, width}) => {
 
 						<GridListTileBar
 							className={classes.tileBar}
-							title={data[id].name}
+							title={data[id].title}
 							subtitle={
 								<span>
+									Rating:
 									<NumberField
 										className={classes.priceGrid}
-										source="price"
+										source="ratingAvg"
 										record={data[id]}
 										color="inherit"
-										options={{
+										/* options={{
 											style: 'currency',
 											currency: 'EUR',
-										}}
+										}} */
 									/>
 								</span>
 							}
