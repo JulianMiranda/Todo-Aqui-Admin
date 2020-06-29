@@ -9,12 +9,13 @@ import {
 	FormWithRedirect,
 	BooleanInput,
 } from 'react-admin';
+import {UsersTitle} from './UsersTitle';
 import {Box, Card, CardContent} from '@material-ui/core';
 import {fetchRoles} from '../../fetch';
 
 const UsersEdit = (props) => {
 	return (
-		<Edit {...props} component="div">
+		<Edit {...props} title={<UsersTitle />} component="div">
 			<UserForm />
 		</Edit>
 	);

@@ -1,19 +1,7 @@
 import * as React from 'react';
 import {memo} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-
+import {useStyles} from './UsersStyles';
 import AvatarField from './AvatarField';
-
-const useStyles = makeStyles((theme) => ({
-	root: {
-		display: 'flex',
-		flexWrap: 'nowrap',
-		alignItems: 'center',
-	},
-	avatar: {
-		marginRight: theme.spacing(1),
-	},
-}));
 
 const FullNameField = ({record, size}) => {
 	const classes = useStyles();

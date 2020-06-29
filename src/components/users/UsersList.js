@@ -1,10 +1,13 @@
 import React from 'react';
 import {List, Datagrid, EditButton, EmailField, TextField} from 'react-admin';
+import {useMediaQuery} from '@material-ui/core';
 import {Filters} from './Filters';
 import {CustomBoolean} from '../../common/fields/Boolean';
 import FullNameField from './FullNameField';
+import UsersListMobile from './UsersListMobile';
 
 const UsersList = (props) => {
+	const isSmall = useMediaQuery((theme) => theme.breakpoints.down('xs'));
 	return (
 		<List
 			{...props}
@@ -13,14 +16,17 @@ const UsersList = (props) => {
 			filters={<Filters />}
 			exporter={false}
 		>
-			<Datagrid rowClick="show">
-				<FullNameField />
-				{/* <TextField label="Nombre" source="name" /> */}
-				<EmailField label="Correo" source="email" />
-				<TextField label="Rol" source="role" />
-				<CustomBoolean label="Estado" source="status" />
-				<EditButton label="Editar" />
-			</Datagrid>
+			{isSmall ? (
+				<UsersListMobile />
+			) : (
+				<Datagrid rowClick="show">
+					<FullNameField />
+					<EmailField label="Correo" source="email" />
+					<TextField label="Rol" source="role" />
+					<CustomBoolean label="Estado" source="status" />
+					<EditButton label="Editar" />
+				</Datagrid>
+			)}
 		</List>
 	);
 };
