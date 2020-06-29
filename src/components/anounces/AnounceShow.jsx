@@ -3,92 +3,72 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import {makeStyles} from '@material-ui/core/styles';
-import {useShowController, ReferenceField, TextField} from 'react-admin';
-
-/* import Basket from '../orders/Basket'; */
-
-/* const CustomerField = ({record}) =>
-	record ? (
-		<Typography>
-			{record.first_name} {record.last_name}
-			<br />
-			{record.address}
-			<br />
-			{record.city}, {record.zipcode}
-		</Typography>
-	) : null; */
+import {useShowController, Show, ImageField} from 'react-admin';
+import {AnounceTitle} from './AnounceTitle';
+import {useStyles} from './AnounceStyles';
+import {CustomBoolean} from '../../common/fields/Boolean';
 
 const AnounceShow = (props) => {
 	const {record} = useShowController(props);
 	const classes = useStyles();
+	console.log(record, 'record');
 
 	if (!record) return null;
 	return (
-		<Card className={classes.root}>
-			<CardContent>
-				<Grid container spacing={2}>
-					<Grid item xs={6}>
-						<Typography variant="h6" gutterBottom>
-							{record.title}
-						</Typography>
+		<Show title={<AnounceTitle />} {...props}>
+			<Card>
+				<CardContent>
+					<Grid container spacing={2}>
+						<Grid item xs={12} sm={6}>
+							<Typography variant="h4" gutterBottom align="center">
+								{record.title}
+							</Typography>
+							<Typography variant="h5" gutterBottom align="center">
+								Categoría: <i>{record.category.name}</i>
+							</Typography>
+							<Typography variant="h5" gutterBottom align="center">
+								Rating: <i>{record.ratingAvg}</i>
+							</Typography>
+						</Grid>
+						<Grid item xs={12} sm={6}>
+							<Grid container spacing={2}>
+								<Grid item xs={6}>
+									<Typography variant="h5" gutterBottom align="center">
+										Creado{' '}
+									</Typography>
+									<Typography gutterBottom align="center">
+										{new Date(record.createdAt).toLocaleDateString()}
+									</Typography>
+								</Grid>
+								<Grid item xs={6}>
+									<Typography variant="h5" gutterBottom align="center">
+										Editado{' '}
+									</Typography>
+									<Typography gutterBottom align="center">
+										{new Date(record.updatedAt).toLocaleDateString()}
+									</Typography>
+								</Grid>
+							</Grid>
+							<Grid item xs={12}>
+								<div className={classes.Space}>&nbsp;</div>
+								<Typography variant="h5" gutterBottom align="center">
+									Status
+								</Typography>
+								<Typography variant="h6" gutterBottom align="center">
+									<CustomBoolean record={record} label="Estado" source="status" />
+								</Typography>
+							</Grid>
+						</Grid>
+						<Grid container spacing={2}>
+							<Grid item xs={12} sm={12}>
+								<ImageField record={record} align="center" source="images" src="url" />
+							</Grid>
+						</Grid>
 					</Grid>
-					<Grid item xs={6}>
-						<Typography variant="h6" gutterBottom align="right">
-							<img src={record.images[0].url} alt="" />
-						</Typography>
-					</Grid>
-				</Grid>
-				{/* <Grid container spacing={2}>
-					<Grid item xs={12} container alignContent="flex-end">
-						<ReferenceField
-							resource="users"
-							reference="users"
-							source="provider"
-							basePath="/users"
-							record={record}
-							link={false}
-						>
-							<TextField source="name" />
-						</ReferenceField>
-					</Grid>
-				</Grid> */}
-				<div className={classes.spacer}>&nbsp;</div>
-				<Grid container spacing={2}>
-					<Grid item xs={6}>
-						<Typography variant="h6" gutterBottom align="center">
-							Date{' '}
-						</Typography>
-						<Typography gutterBottom align="center">
-							{new Date(record.updatedAt).toLocaleDateString()}
-						</Typography>
-					</Grid>
-
-					<Grid item xs={5}>
-						<Typography variant="h6" gutterBottom align="center">
-							Categoría
-						</Typography>
-						<ReferenceField
-							resource="anounces"
-							reference="categories"
-							source="category"
-							basePath="/anounces"
-							record={record}
-							link={false}
-						>
-							<TextField source="name" align="center" component="p" gutterBottom />
-						</ReferenceField>
-					</Grid>
-				</Grid>
-			</CardContent>
-		</Card>
+				</CardContent>
+			</Card>
+		</Show>
 	);
 };
 
 export default AnounceShow;
-
-const useStyles = makeStyles({
-	root: {width: 600, margin: 'auto'},
-	spacer: {height: 20},
-	invoices: {margin: '10px 0'},
-});

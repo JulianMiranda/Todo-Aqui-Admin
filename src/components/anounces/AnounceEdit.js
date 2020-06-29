@@ -6,61 +6,73 @@ import {
 	ReferenceInput,
 	ImageField,
 	SelectInput,
-	SimpleForm,
+	Toolbar,
+	FormWithRedirect,
 	BooleanInput,
 } from 'react-admin';
 import {Grid, CardContent, Card} from '@material-ui/core';
+import {AnounceTitle} from './AnounceTitle';
 
-const AnounceTitle = ({record}) => (
-	<span>
-		Oferta: <i>{record.title}</i>
-	</span>
-);
 const ProductEdit = (props) => {
 	return (
-		<Edit {...props} title={<AnounceTitle />}>
-			<SimpleForm redirect="list">
-				<Card>
-					<CardContent>
-						<Grid container spacing={2}>
-							<Grid item sm={6} xs={12}>
-								<TextInput label="Nombre" fullWidth source="title" />
-							</Grid>{' '}
-							<Grid item sm={6} xs={12}>
-								<ReferenceInput
-									label="Categoría"
-									fullWidth
-									source="category.id"
-									reference="categories"
-								>
-									<SelectInput source="name" />
-								</ReferenceInput>
-							</Grid>
-							<Grid item sm={12} xs={12}>
-								<ReferenceInput label="Proveedor" fullWidth source="provider.id" reference="users">
-									<SelectInput source="name" />
-								</ReferenceInput>
-							</Grid>
-							<Grid item sm={12} xs={12}>
-								<ImageInput
-									source="images"
-									resource="anounces"
-									accept="image/*"
-									placeholder={<p>Drop your file here</p>}
-									multiple="true"
-									fullWidth
-								>
-									<ImageField source="url" />
-								</ImageInput>
-
-								<BooleanInput label="Estado" source="status" />
-							</Grid>
-						</Grid>
-					</CardContent>
-				</Card>
-			</SimpleForm>
+		<Edit {...props} title={<AnounceTitle />} component="div">
+			<ProductForm />
 		</Edit>
 	);
 };
 
+const ProductForm = (props) => {
+	return (
+		<FormWithRedirect
+			{...props}
+			render={(formProps) => (
+				<Card>
+					<form>
+						<CardContent>
+							<Grid container spacing={2}>
+								<Grid item sm={4} xs={12}>
+									<TextInput label="Título" source="title" />
+								</Grid>{' '}
+								<Grid item sm={4} xs={12}>
+									<ReferenceInput label="Categoría" source="category.id" reference="categories">
+										<SelectInput source="name" />
+									</ReferenceInput>
+								</Grid>
+								<Grid item sm={4} xs={12}>
+									<ReferenceInput label="Proveedor" source="provider.id" reference="users">
+										<SelectInput source="name" />
+									</ReferenceInput>
+								</Grid>
+								<Grid item sm={12} xs={12}>
+									<ImageInput
+										source="images"
+										resource="anounces"
+										accept="image/*"
+										placeholder={<p>Drop your file here</p>}
+										multiple="true"
+										fullWidth
+										label="Imágenes"
+									>
+										<ImageField source="url" />
+									</ImageInput>
+
+									<BooleanInput label="Estado" source="status" />
+								</Grid>
+							</Grid>
+						</CardContent>
+						<Toolbar
+							record={formProps.record}
+							basePath={formProps.basePath}
+							undoable={true}
+							invalid={formProps.invalid}
+							handleSubmit={formProps.handleSubmit}
+							saving={formProps.saving}
+							resource="anounces"
+						/>
+					</form>
+				</Card>
+			)}
+		/>
+	);
+};
 export default ProductEdit;
