@@ -39,8 +39,20 @@ const anounces = async (resource, params) => {
 	object.provider = params.data.provider;
 	object.category = params.data.category;
 
-	const url = await UploadImage(resource, [params.data.image]);
-	object.images = [{url: url[0]}];
+	if (params.data.images && params.data.images.length > 0) {
+		let urls = [];
+
+		const addImages = params.data.images.filter((image) => !image.id);
+		if (addImages.length > 0) {
+			urls = await UploadImage(resource, addImages);
+		}
+
+		if (urls.length > 0) {
+			object.images = urls.map((url) => ({
+				url,
+			}));
+		}
+	}
 
 	return object;
 };

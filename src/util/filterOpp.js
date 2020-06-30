@@ -3,7 +3,6 @@ export const FilterOpp = async (filter) => {
 
 	if (JSON.stringify(filter) === '{}') return null;
 	if (a.length > 1) {
-		console.log('Adentroo');
 		if (a[1] === 'anounce') {
 			const object = {
 				state: ['=', `${filter.state}`],

@@ -12,7 +12,7 @@ const CategoriesCreate = (props) => {
 					accept="image/*"
 					placeholder={<p>Drop your file here</p>}
 					fullWidth
-					validate={required()}
+					multiple="true"
 				>
 					<ImageField source="url" />
 				</ImageInput>

@@ -94,6 +94,10 @@ const anounce = async (params) => {
 				height: true,
 			},
 		},
+		{
+			path: 'provider',
+			filter: {status: true},
+		},
 	];
 	const {pagination, sort, filter} = params;
 	const {page, perPage} = pagination;
