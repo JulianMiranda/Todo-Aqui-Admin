@@ -1,12 +1,12 @@
 import React from 'react';
-import {Create, SimpleForm, TextInput, ImageInput, ImageField, required} from 'react-admin';
+import {Create, SimpleForm, TextInput /* , ImageInput, ImageField */, required} from 'react-admin';
 
 const CategoriesCreate = (props) => {
 	return (
-		<Create {...props} title="Crear Tipo de Negocio">
+		<Create {...props} title="Crear Categoría">
 			<SimpleForm redirect="list">
 				<TextInput source="name" validate={required()} />
-				<ImageInput
+				{/* <ImageInput
 					source="image"
 					resource="categories"
 					accept="image/*"
@@ -15,7 +15,7 @@ const CategoriesCreate = (props) => {
 					multiple="true"
 				>
 					<ImageField source="url" />
-				</ImageInput>
+				</ImageInput> */}
 			</SimpleForm>
 		</Create>
 	);
