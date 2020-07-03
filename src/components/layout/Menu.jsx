@@ -10,6 +10,7 @@ import subcategories from '../subcategories';
 import users from '../users';
 import reviews from '../reviews';
 import SubMenu from './SubMenu';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 const Menu = ({onMenuClick, dense, logout}) => {
 	const [state, setState] = useState({
@@ -93,6 +94,16 @@ const Menu = ({onMenuClick, dense, logout}) => {
 				sidebarIsOpen={open}
 				dense={dense}
 			/>
+			{isSmall && (
+				<MenuItemLink
+					to="/configuration"
+					primaryText="Configuracion"
+					leftIcon={<SettingsIcon />}
+					onClick={onMenuClick}
+					sidebarIsOpen={open}
+					dense={dense}
+				/>
+			)}
 			{isSmall && logout}
 		</div>
 	);

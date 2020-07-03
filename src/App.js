@@ -12,6 +12,9 @@ import Anounces from './components/anounces';
 import Reviews from './components/reviews';
 import Opportunities from './components/opportunities';
 
+import themeReducer from './themeReducer';
+import customRoutes from './routes';
+
 /* import RolesReducer from './store/reducers/roles.reducer'; */
 /* import RolesSaga from './store/sagas/roles.saga'; */
 
@@ -21,10 +24,12 @@ const App = (props) => {
 			title="Todo Aqui Admin"
 			/* customSagas={[RolesSaga]} */
 			/* customReducers={{roles: RolesReducer}} */
+			customRoutes={customRoutes}
 			dataProvider={dataProvider}
 			authProvider={authProvider}
 			loginPage={CustomLoginPage}
 			layout={Layout}
+			customReducers={{theme: themeReducer}}
 		>
 			{(permissions) =>
 				permissions === 'ADMIN' && [
