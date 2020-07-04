@@ -19,7 +19,6 @@ import {Filters} from './Filters';
 import {CustomBoolean} from '../../common/fields/Boolean';
 import FullNameField from '../users/FullNameField';
 
-/* import {Identifier} from 'ra-core'; */
 const useDatagridStyles = makeStyles({
 	total: {fontWeight: 'bold'},
 });
