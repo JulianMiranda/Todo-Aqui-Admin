@@ -4,10 +4,20 @@ import {Filter, ReferenceInput, SearchInput, SelectInput} from 'react-admin';
 const AnounceFilter = (props) => (
 	<Filter {...props}>
 		<SearchInput source="q" alwaysOn />
-		<ReferenceInput source="provider" reference="users" sort={{field: 'id', order: 'ASC'}}>
+		<ReferenceInput
+			label="Proveedor"
+			source="provider"
+			reference="users"
+			sort={{field: 'id', order: 'ASC'}}
+		>
 			<SelectInput source="name" />
 		</ReferenceInput>
-		<ReferenceInput source="category" reference="categories" sort={{field: 'id', order: 'ASC'}}>
+		<ReferenceInput
+			label="Categoría"
+			source="category"
+			reference="categories"
+			sort={{field: 'id', order: 'ASC'}}
+		>
 			<SelectInput source="name" />
 		</ReferenceInput>
 	</Filter>

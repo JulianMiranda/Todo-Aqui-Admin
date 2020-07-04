@@ -1,4 +1,24 @@
-import * as React from 'react';
+import React from 'react';
+import {List, Pagination} from 'react-admin';
+import GridList from './GridList';
+import AnounceFilter from './Filters';
+
+const OffersList = (props) => (
+	<List
+		{...props}
+		filters={<AnounceFilter />}
+		perPage={10}
+		pagination={<Pagination rowsPerPageOptions={[10, 20, 40]} />}
+		sort={{field: 'id', order: 'ASC'}}
+		exporter={false}
+	>
+		<GridList />
+	</List>
+);
+
+export default OffersList;
+
+/* import * as React from 'react';
 import {EditButton, Datagrid, ReferenceField, TextField, List} from 'react-admin';
 import {ListControllerProps} from 'ra-core';
 import inflection from 'inflection';
@@ -70,7 +90,7 @@ const AnounceList = (props) => (
 	</List>
 );
 
-export default AnounceList;
+export default AnounceList; */
 
 /* 
 import * as React from 'react';

@@ -8,7 +8,7 @@ export const PrepareCreateObject = async (resource, params) => {
 	else if (resource === 'subcategories') return subcategories(resource, params);
 	else if (resource === 'anounces') return anounces(resource, params);
 	else if (resource === 'reviews') return reviews(resource, params);
-
+	else if (resource === 'opportunities') return opportunities(resource, params);
 	return {};
 };
 const categories = async (resource, params) => {
@@ -64,5 +64,29 @@ const reviews = async (resource, params) => {
 	object.provider = params.data.provider;
 	object.anounce = params.data.anounce;
 	object.rating = params.data.rating;
+	return object;
+};
+const opportunities = async (resource, params) => {
+	const object = {};
+	object.state = params.data.state;
+	object.user = params.data.user;
+	object.provider = params.data.provider;
+	object.anounce = params.data.anounce;
+
+	if (params.data.images) {
+		let urls = [];
+
+		const addImages = params.data.images.filter((image) => !image.id);
+		if (addImages.length > 0) {
+			urls = await UploadImage(resource, addImages);
+		}
+
+		if (urls.length > 0) {
+			object.images = urls.map((url) => ({
+				url,
+			}));
+		}
+	}
+
 	return object;
 };
