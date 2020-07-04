@@ -7,7 +7,7 @@ export const PrepareEditObject = async (resource, params) => {
 	else if (resource === 'subcategories') return subcategory(resource, data, previousData);
 	else if (resource === 'anounces') return anounce(resource, data, previousData);
 	else if (resource === 'reviews') return reviews(resource, data, previousData);
-
+	else if (resource === 'opportunities') return opportunities(resource, data, previousData);
 	return {};
 };
 
@@ -75,7 +75,6 @@ const subcategory = async (resource, data, previousData) => {
 
 const anounce = async (resource, data, previousData) => {
 	const object = {};
-	console.log(data, 'Data Edit');
 
 	if (data.title !== previousData.title) {
 		object.title = data.title;
@@ -139,5 +138,49 @@ const reviews = async (resource, data, previousData) => {
 	if (data.recomendations !== previousData.recomendations) {
 		object.recomendations = data.recomendations;
 	}
+	return object;
+};
+const opportunities = async (resource, data, previousData) => {
+	const object = {};
+
+	if (data.status !== previousData.status) {
+		object.status = data.status;
+	}
+	if (data.provider.id !== previousData.provider.id) {
+		object.provider = data.provider.id;
+	}
+	if (data.user.id !== previousData.user.id) {
+		object.user = data.user.id;
+	}
+	if (data.anounce.id !== previousData.anounce.id) {
+		object.anounce = data.anounce.id;
+	}
+	if (data.images && data.images.length > 0) {
+		let urls = [];
+
+		const addImages = data.images.filter((image) => !image.id);
+		if (addImages.length > 0) {
+			urls = await UploadImage(resource, addImages);
+		}
+
+		if (urls.length > 0) {
+			object.images = urls.map((url) => ({
+				url,
+			}));
+		}
+
+		const deleteImages = previousData.images
+			.filter(
+				(x) =>
+					!data.images
+						.filter((image) => image.id)
+						.map((x) => x.id)
+						.includes(x.id),
+			)
+			.map((image) => image.id);
+
+		if (deleteImages.length > 0) object.deleteImages = deleteImages;
+	}
+
 	return object;
 };

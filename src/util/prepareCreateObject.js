@@ -1,9 +1,6 @@
 import {UploadImage} from '../firebase/uploadImage';
 
 export const PrepareCreateObject = async (resource, params) => {
-	console.log(resource, 'resource');
-	console.log(params, 'params');
-
 	if (resource === 'categories') return await categories(resource, params);
 	else if (resource === 'subcategories') return subcategories(resource, params);
 	else if (resource === 'anounces') return anounces(resource, params);
